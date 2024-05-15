@@ -10,3 +10,4 @@ class SnapshotSchedule(models.Model):
     task_id = models.CharField(max_length=100, blank=True, null=True)
     snapshot_taken = models.BooleanField(default=False)
     snapshot_execution_datetime = models.CharField(max_length=100,default='none')
+    snapshot_name = models.CharField(max_length=200,default='snapshot_by_script')

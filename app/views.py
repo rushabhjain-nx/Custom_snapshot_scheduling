@@ -139,6 +139,8 @@ def save_ss(request):
             vm_name, vm_uuid, cluster_name, cluster_ip = vm_data.split('|')
             snapshot_date = request.POST.get(f'snapshot_date_{selected_vms.index(vm_data) + 1}')
             snapshot_time = request.POST.get(f'snapshot_time_{selected_vms.index(vm_data) + 1}')
+            snapshot_name = request.POST.get(f'snapshot_name_{selected_vms.index(vm_data) + 1}')
+
             print(snapshot_date,snapshot_time)
             snapshot_schedule = SnapshotSchedule.objects.create(
                 vm_name=vm_name,
@@ -147,7 +149,8 @@ def save_ss(request):
                 snapshot_date=snapshot_date,
                 cluster_ip=cluster_ip,
                 cluster_name=cluster_name,
-                task_id = None
+                task_id = None,
+                snapshot_name = snapshot_name
             )
             # Store the task ID associated with the scheduled task
             #snapshot_schedule.task_id = schedule_snapshot_task(snapshot_schedule)
@@ -205,14 +208,14 @@ def check_ss(request):
             print("Current datetime:", current_datetime)
             print("Snapshot scheduled datetime:", snapshot_datetime)
             # Call the take_snapshot function for this SnapshotSchedule
-            res = take_snapshot(snapshot_schedule.vm_uuid,snapshot_schedule.cluster_ip)
+            res = take_snapshot(snapshot_schedule.vm_uuid,snapshot_schedule.cluster_ip,snapshot_schedule.snapshot_name)
             if res==None:
                 print("Snapshot failed")
             else:
                 snapshot_schedule.snapshot_taken = True
                 snapshot_schedule.snapshot_execution_datetime =format_datetime(timezone.now())
                 snapshot_schedule.save()
-                send_email(snapshot_schedule.vm_name, snapshot_schedule.cluster_name)
+                send_email(snapshot_schedule.vm_name, snapshot_schedule.cluster_name,snapshot_schedule.snapshot_name)
                 print("Snapshot success")
             
 

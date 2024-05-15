@@ -50,6 +50,13 @@
                         <label for="snapshot_time_{{ forloop.counter }}">Snapshot Time:</label>
                         <input type="time" class="form-control" id="snapshot_time_{{ forloop.counter }}" name="snapshot_time_{{ forloop.counter }}" required>
                     </div>
+
+                    <div class="form-group">
+                        <label for="snapshot_name_{{ forloop.counter }}">Snapshot Name:</label>
+                        <input type="text" class="form-control" id="snapshot_name_{{ forloop.counter }}" name="snapshot_name_{{ forloop.counter }}" required>
+                    </div>
+                    
+
                     <!-- Hidden input fields for VM data -->
                     <input type="hidden" name="selected_vms" value="{{ vm.name }}|{{ vm.uuid }}|{{ vm.cluster_name }}|{{ vm.cip }}">
                 </li>

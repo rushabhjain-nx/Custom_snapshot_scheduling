@@ -108,7 +108,7 @@ def get_pe(creds):
     
 
 
-def take_snapshot(uuid,cip):
+def take_snapshot(uuid,cip,ss_name):
     with open("prism_element_creds.json", 'r') as file:
     # Load the JSON data
         data = json.load(file)
@@ -120,7 +120,7 @@ def take_snapshot(uuid,cip):
     body = {
         "snapshot_specs":[
             {
-                "snapshot_name":snapshot_name,
+                "snapshot_name":ss_name,
                 "vm_uuid":uuid
 
             }

@@ -6,6 +6,25 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
+    <style>
+        /* Center the content vertically and horizontally */
+        .centered-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            
+        }
+        
+        /* Style for the error container */
+        .error-container {
+           
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
+            background-color: white;
+        }
+    </style>
 </head>
 <body style="background-color: #656565;">
     <div class="container-fluid " style="margin-top: 10px;border-radius: 2px;">
@@ -23,18 +42,17 @@
         </nav>
     </div>
 
-    <div class="container-fluid">
-        <h1>Connection to PC Failed!</h1>
-        <h5>Possible Reasons : </h5>
-        <ul>
-            
-            <li>Invalid Credentials</li>
-            <li>IP unreachable</li>
-            <li>Firewall enabled or Port rule not added</li>
-         
-        </ul>
+    <div class="centered-content">
+        <div class="container error-container">
+            <h1>Connection to PC Failed!</h1>
+            <h5>Possible Reasons : </h5>
+            <ul>
+                <li>Invalid Credentials</li>
+                <li>IP unreachable</li>
+                <li>Firewall enabled or Port rule not added</li>
+            </ul>
+        </div>
     </div>
-   
    
 </body>
 </html>
