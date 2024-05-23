@@ -5,196 +5,191 @@ from pathlib import Path
 from requests.auth import HTTPBasicAuth
 import csv
 from datetime import datetime
-
-
-def get_vms_form_pe(uuid,ip,name):
+from .creds_handler import encrypt_text, decrypt_text
+def get_vms_form_pe(uuid, ip, name):
+    """
+    Fetches VMs from a Prism Element (PE) cluster.
+    
+    Args:
+        uuid (str): The UUID of the PE cluster.
+        ip (str): The IP address of the PE cluster.
+        name (str): The name of the PE cluster.
+    
+    Returns:
+        list: A list of dictionaries containing VM information.
+    """
     with open("creds.json", 'r') as file:
-    # Load the JSON data
         creds_data = json.load(file)
-    print(creds_data)
 
-    data=[]
+    data = []
     headers = {"Content-Type": "application/json", "charset": "utf-8"}
     count = 0
     cluster_name = name
     Pe_IP = ip
-    user=creds_data["username"]
-    passw=creds_data["password"]
+    try:
+        user = decrypt_text(creds_data["username"])
+        passw = decrypt_text(creds_data["password"])
+    except Exception:
+        return None
+    #print(user, passw)
     endpoint = "https://{}:9440/PrismGateway/services/rest/v2.0/vms/".format(Pe_IP)
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-    response = requests.get(endpoint,auth=(user, passw),headers=headers,verify=False)
-        #print(response.status_code)
+    response = requests.get(endpoint, auth=(user, passw), headers=headers, verify=False)
+    
     if response.status_code != 200:
-        print("Error is getting VMS for PE : ",Pe_IP)
+        print("Error in getting VMs for PE:", Pe_IP)
         return None
-    #print(response.json())
-
 
     for obj in response.json()["entities"]:
-        item = {}
-        item["vm_name"] = obj["name"]
-        item["uuid"] = obj["uuid"]
-        item["cip"] = Pe_IP
-        item["cluster_name"] = cluster_name
+        item = {
+            "vm_name": obj["name"],
+            "uuid": obj["uuid"],
+            "cip": Pe_IP,
+            "cluster_name": cluster_name
+        }
         data.append(item)
-        count+=1
-        #print(item)
+        count += 1
 
-    print("TOTAL VMS FETCHED  : ", count)
+    print("TOTAL VMS FETCHED:", count)
 
     data = sorted(data, key=lambda x: x.get('vm_name', ''))
-
     return data
 
-    return 1
 
 #this script has GUI 
 def get_pe(creds):
+    """
+    Fetches Prism Element (PE) clusters from Prism Central (PC) and saves the data in a JSON file.
+
+    Args:
+        creds (list): List containing PC credentials [PC_IP, username, password].
+
+    Returns:
+        int: 1 if successful.
+    """
     PC_IP = creds[0]
-    user=creds[1]
-    passw=creds[2]
+    user = creds[1]
+    passw = creds[2]
     headers = {"Content-Type": "application/json", "charset": "utf-8"}
     endpoint = "https://{}:9440/api/nutanix/v3/groups".format(PC_IP)
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-    body = { "entity_type":"cluster","group_member_attributes":
-            [{"attribute":"name"},{"attribute":"version"},{"attribute":"is_available"},
-             {"attribute":"service_list"},{"attribute":"full_version"},
-             {"attribute":"external_ip_address"}]
+    body = {
+        "entity_type": "cluster",
+        "group_member_attributes": [
+            {"attribute": "name"},
+            {"attribute": "version"},
+            {"attribute": "is_available"},
+            {"attribute": "service_list"},
+            {"attribute": "full_version"},
+            {"attribute": "external_ip_address"}
+        ]
     }
-    response = requests.post(endpoint,auth=(user, passw),headers=headers,verify=False,data=json.dumps(body))
+    response = requests.post(endpoint, auth=(user, passw), headers=headers, verify=False, data=json.dumps(body))
     if response.status_code != 200:
         return None
-    #print(list(response.json()))
-    print()
-   # print(list(response.json()["group_results"][0]["entity_results"][0]['data']))
+
     data = []
     n = int(response.json()["total_entity_count"])
-    #print(n)
-    uuid=""
-    c=0
+    uuid = ""
+    c = 0
+
     for i in range(n):
-       # print(list(response.json()["group_results"][0]["entity_results"]))
         uuid = response.json()["group_results"][0]["entity_results"][i]["entity_id"]
         obj = response.json()["group_results"][0]["entity_results"][i]["data"]
-        name=""
-        ip=""
+        name = ""
+        ip = ""
         
         for item in obj:
-            #print(item)
-            if item['name']=='name':
+            if item['name'] == 'name':
                 name = item['values'][0]['values'][0]
-                #print(name)
-            if item['name']=='external_ip_address':
+            if item['name'] == 'external_ip_address':
                 ip = item['values'][0]['values'][0]
-                #print(ip)
-        c=c+1
-        data.append({"index":c,"uuid":uuid,"name":name,"ip":ip})
+        
+        c = c + 1
+        data.append({"index": c, "uuid": uuid, "name": name, "ip": ip})
 
-    #print(data)
-    with open("pe_list_generated.json","w") as json_file:
+    with open("pe_list_generated.json", "w") as json_file:
          print("Prism element data fetched from PC and saved in pe_list_generated.json.")
-         json.dump(data,json_file,indent=4)
+         json.dump(data, json_file, indent=4)
 
-    with open("creds.json","w") as j:
+    with open("creds.json", "w") as j:
         obj = {
-            "username":user,
-            "password":passw
+            "username": encrypt_text(user),
+            "password": encrypt_text(passw)
         }
-        json.dump(obj,j,indent=4)
+        json.dump(obj, j, indent=4)
         print("Creds saved in creds.json")
         
     return 1
-    #return response
-    
 
 
-def take_snapshot(uuid,cip,ss_name):
-    with open("prism_element_creds.json", 'r') as file:
-    # Load the JSON data
-        data = json.load(file)
-    print(data)
-    headers = {"Content-Type": "application/json", "charset": "utf-8"}
-    endpoint = "https://10.38.87.37:9440/PrismGateway/services/rest/v2.0/snapshots/"
-    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-    snapshot_name = "snapshot-by-script"
-    body = {
-        "snapshot_specs":[
-            {
-                "snapshot_name":ss_name,
-                "vm_uuid":uuid
-
-            }
-        ]
-    }
-    #response = requests.post(endpoint,auth=(user, passw),headers=headers,verify=False,data=json.dumps(body))
-    for obj in data:
-        if cip == obj["ip"]:
-            print(obj)
-            endpoint = "https://{}:9440/PrismGateway/services/rest/v2.0/snapshots/".format(cip)
-            urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-            user = obj["username"]
-            passw = obj["password"]
-            response = requests.post(endpoint,auth=(user, passw),headers=headers,verify=False,data=json.dumps(body))
-            print(response.status_code)
-            print(response.json())
-            if response.status_code == 201:
-                return response
-            else:
-                return None
-            
-            
-        
 
 def get_vm_uuidsc(creds):
+    """
+    Fetches VM UUIDs from Prism Central (PC) and associates them with their respective PE clusters.
+
+    Args:
+        creds (list): List containing PC credentials [PC_IP, username, password].
+
+    Returns:
+        list: A list of dictionaries containing VM UUIDs associated with their PE clusters.
+    """
     with open("pe_list_generated.json", 'r') as file:
-    # Load the JSON data
         data = json.load(file)
-    #print(data)
+
     uuid_ip = {}
     for obj in data:
         uuid_ip[obj["uuid"]] = obj["ip"]
-        #uuid_ip.append(item)
 
-    #print(uuid_ip)
     PC_IP = creds[0]
-    user=creds[1]
-    passw=creds[2]
+    user = creds[1]
+    passw = creds[2]
     headers = {"Content-Type": "application/json", "charset": "utf-8"}
     endpoint = "https://{}:9440/api/nutanix/v3/vms/list".format(PC_IP)
-    #print(creds)
-    #endpoint  = "https://{}:9440/PrismGateway/services/rest/v2.0/vms/".format(PE_IP)
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-    body = {"kind":"vm","length":500}
-    try:
-        response = requests.post(endpoint,auth=(user, passw),headers=headers,verify=False,data=json.dumps(body))
-        if response.status_code != 200:
-            return None
-    except TimeoutError:
-        return None
-    #print(response.status_code)
+
     vms_uuid = []
     vm_count = 0
-    #print(list(response.json()))
-    #print(list(response.json()["metadata"]))
-    #return
-    for obj in response.json()["entities"]:
-        item = {}
-        item["vm_name"] = obj["status"]["name"]
-        item["uuid"] = obj["metadata"]["uuid"]
-        item["cip"] = uuid_ip[obj["spec"]["cluster_reference"]["uuid"]]
-        vms_uuid.append(item)
-        vm_count+=1
-    obj = {}
-    obj["Vm_count"] = vm_count
+    offset = 0
+    length = 500
+
+    while True:
+        body = {"kind": "vm", "length": length, "offset": offset}
+        try:
+            response = requests.post(endpoint, auth=(user, passw), headers=headers, verify=False, data=json.dumps(body))
+            if response.status_code != 200:
+                return None
+        except TimeoutError:
+            return None
+
+        entities = response.json().get("entities", [])
+        if not entities:
+            break
+
+        for obj in entities:
+            item = {
+                "vm_name": obj["status"]["name"],
+                "uuid": obj["metadata"]["uuid"],
+                "cip": uuid_ip[obj["spec"]["cluster_reference"]["uuid"]]
+            }
+            vms_uuid.append(item)
+            vm_count += 1
+
+        if len(entities) < length:
+            break
+
+        offset += length
+
+    obj = {"Vm_count": vm_count}
     vms_uuid.append(obj)
-        #vms_uuid.append(item)
-    #print(vms_uuid)
+
     vms_uuid = sorted(vms_uuid, key=lambda x: x.get('cip', ''))
 
-    with open("pc_generated_vms_uuid.json","w") as json_file:
-         print("VMS data fetched from PC and saved in pc_generated_vms_uuis.json.")
-         json.dump(vms_uuid,json_file,indent=4)
-    return []
+    with open("pc_generated_vms_uuid.json", "w") as json_file:
+        print("VMS data fetched from PC and saved in pc_generated_vms_uuid.json.")
+        json.dump(vms_uuid, json_file, indent=4)
+
+    return vms_uuid
 
 #creds = ["10.38.87.39","rushabh","Nutanix/4u"]
 #get_pe(creds)

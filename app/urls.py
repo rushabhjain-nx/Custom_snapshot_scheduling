@@ -14,5 +14,6 @@ urlpatterns = [
     path('save_ss/', views.save_ss, name='save_ss'),
     path('past_snapshots/', views.past_snapshots, name='past_snapshots'),
     path('past_snapshots/<int:schedule_id>/delete/', views.delete_past_schedule, name='delete_past_schedule'),
+    path('failed_snapshots/', views.failed_snapshots, name='failed_snapshots'),
 
 ]

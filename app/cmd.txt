@@ -1,0 +1,10 @@
+source ../venv/bin/activate
+
+python3 manage.py runserver
+
+celery -A snapshots_by_schedules.celery beat -l info
+
+celery -A snapshots_by_schedules.celery worker -l info
+
+
+

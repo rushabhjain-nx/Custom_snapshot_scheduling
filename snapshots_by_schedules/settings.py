@@ -10,10 +10,24 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
-from pathlib import Path
+
 import os
+from pathlib import Path
+from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+
+env_path = Path('.') / '.env'
+print(env_path)
+load_dotenv(dotenv_path=env_path)
+
+# Retrieve the encryption key
+ENCRYPTION_KEY = os.environ.get('KEY')
+if not ENCRYPTION_KEY:
+    raise ValueError("No ENCRYPTION_KEY set for the Django application")
+
 
 
 # Quick-start development settings - unsuitable for production

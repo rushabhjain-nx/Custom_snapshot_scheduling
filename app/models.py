@@ -11,3 +11,4 @@ class SnapshotSchedule(models.Model):
     snapshot_taken = models.BooleanField(default=False)
     snapshot_execution_datetime = models.CharField(max_length=100,default='none')
     snapshot_name = models.CharField(max_length=200,default='snapshot_by_script')
+    snapshot_failed = models.BooleanField(default=False)

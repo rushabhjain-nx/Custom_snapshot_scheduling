@@ -50,19 +50,39 @@
         </nav>
     </div>
 
+    <div class="container-fluid">
+        <center><h2 style="color: white;margin-top: 20px;">Custom Snapshot Scheduler App</h2></center>
+    </div>
+
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="big-div">
-                <a href="{% url 'snapshot_schedule_list' %}">View Current Snapshot Schedules</a>
+                <a href="{% url 'snapshot_schedule_list' %}">
+                    <i class="bi bi-clock-history" style="font-size: 48px; color: white;"></i>
+                    <p style="font-size: 24px;">View Current Snapshot Schedules</p>
+                </a>
             </div>
             <div class="big-div">
-                <a href="{% url 'index' %}">Make New Snapshot Schedules</a>
+                <a href="{% url 'index' %}">
+                    <i class="bi bi-plus-square" style="font-size: 48px; color: white;"></i>
+                    <p style="font-size: 24px;">Make New Snapshot Schedules</p>
+                </a>
             </div>
             <div class="big-div">
-                <a href="{% url 'past_snapshots' %}">View Past Successful Snapshots</a>
+                <a href="{% url 'past_snapshots' %}">
+                    <i class="bi bi-check-circle" style="font-size: 48px; color: white;"></i>
+                    <p style="font-size: 24px;">View Past Successful Snapshots</p>
+                </a>
+            </div>
+            <div class="big-div">
+                <a href="{% url 'failed_snapshots' %}">
+                    <i class="bi bi-x-circle" style="font-size: 48px; color: white;"></i>
+                    <p style="font-size: 24px;">View Failed Snapshots</p>
+                </a>
             </div>
         </div>
     </div>
+    
     <!-- Link Bootstrap JS file (optional) -->
     <script src="/static/bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
 </body>

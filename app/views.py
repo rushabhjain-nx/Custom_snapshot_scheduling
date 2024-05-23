@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404, redirect
 from .models import SnapshotSchedule
-from .script import get_vm_uuidsc,get_pe,take_snapshot,get_vms_form_pe
+from .script import get_vm_uuidsc,get_pe,get_vms_form_pe
 # Create your views here.
 import json
 from datetime import datetime, timedelta
@@ -9,6 +9,10 @@ from celery import shared_task
 from django.utils import timezone
 from django.core.serializers.json import DjangoJSONEncoder
 from .email import send_email
+from django.utils.dateformat import format
+import pytz
+
+
 
 selected_items = []
 creds = []
@@ -171,55 +175,81 @@ def format_datetime(dt):
     return formatted_datetime
 
 
+def failed_snapshots(request):
+    schedules = SnapshotSchedule.objects.filter(snapshot_taken=False, snapshot_failed=True)
+    return render(request, 'failed_snapshots.html', {'schedules': schedules}) 
+
+
 @shared_task(bind=True)
-def check_ss(request):
+def check_ss(self):
+    """
+    Task to check and execute snapshot schedules.
+
+    This task checks the database for snapshot schedules that are due,
+    executes the snapshot if the schedule time has passed, and sends
+    email notifications regarding the success or failure of the snapshot.
+    """
     print("Checking for snapshot schedules")
+
     # Get current date and time
     current_datetime = timezone.now()
 
-    # Retrieve all SnapshotSchedule objects from the database
+    # Retrieve all SnapshotSchedule objects where snapshot is not taken
     snapshot_schedules = SnapshotSchedule.objects.filter(snapshot_taken=False)
 
-# Convert queryset to list of dictionaries
+    # Convert queryset to list of dictionaries
     snapshot_schedules_data = list(snapshot_schedules.values())
 
-# Serialize the data to JSON
-    json_data = json.dumps(snapshot_schedules_data, cls=DjangoJSONEncoder, indent=4)
-
-# Write JSON data to a file
+    # Serialize the data to JSON and write to a file
     with open("current_snapshot_schedules.json", "w") as json_file:
-        json_file.write(json_data)
+        json.dump(snapshot_schedules_data, json_file, cls=DjangoJSONEncoder, indent=4)
 
-    if len(snapshot_schedules) == 0:
+    # Check if there are no snapshot schedules
+    if not snapshot_schedules:
         print("No snapshot schedules found")
         return None
-    
-    #print("Current datetime:", current_datetime)
+
+    ist = pytz.timezone('Asia/Kolkata')
     # Iterate over each SnapshotSchedule object
     for snapshot_schedule in snapshot_schedules:
         # Combine date and time fields to create a datetime object
         snapshot_datetime = timezone.make_aware(
             timezone.datetime.combine(snapshot_schedule.snapshot_date, snapshot_schedule.snapshot_time)
         )
-        print("Snapshot datetime:", snapshot_datetime)
+
         # Check if the scheduled datetime has passed
         if snapshot_datetime <= current_datetime:
             print("Time matched.")
             print("Current datetime:", current_datetime)
             print("Snapshot scheduled datetime:", snapshot_datetime)
+
             # Call the take_snapshot function for this SnapshotSchedule
-            res = take_snapshot(snapshot_schedule.vm_uuid,snapshot_schedule.cluster_ip,snapshot_schedule.snapshot_name)
-            if res==None:
+            print("Attempting to Take Snapshot ")
+            res = take_snapshot(snapshot_schedule.vm_uuid, snapshot_schedule.cluster_ip, snapshot_schedule.snapshot_name)
+
+            if res is None:
+
+                # If snapshot failed, reschedule for one hour later
+                new_snapshot_datetime = snapshot_datetime + timedelta(hours=1)
+                snapshot_schedule.snapshot_date = new_snapshot_datetime.date()
+                snapshot_schedule.snapshot_time = new_snapshot_datetime.time()
+                snapshot_schedule.snapshot_failed = True
+                snapshot_schedule.save()
+
+                # Send failure email notification
+                send_email(snapshot_schedule.vm_name, snapshot_schedule.cluster_name, snapshot_schedule.snapshot_name, message_info="failed")
                 print("Snapshot failed")
             else:
+                # If snapshot succeeded, update the schedule
                 snapshot_schedule.snapshot_taken = True
-                snapshot_schedule.snapshot_execution_datetime =format_datetime(timezone.now())
-                snapshot_schedule.save()
-                send_email(snapshot_schedule.vm_name, snapshot_schedule.cluster_name,snapshot_schedule.snapshot_name)
-                print("Snapshot success")
-            
 
+                now_ist = timezone.now().astimezone(ist)
+                snapshot_schedule.snapshot_execution_datetime = format(now_ist, 'd M Y, h:i A')
+                snapshot_schedule.save()
+
+                # Send success email notification
+                send_email(snapshot_schedule.vm_name, snapshot_schedule.cluster_name, snapshot_schedule.snapshot_name, message_info="success")
+                print("Snapshot success")
         else:
             print("Time not matched.")
             print(current_datetime, snapshot_datetime)
-
