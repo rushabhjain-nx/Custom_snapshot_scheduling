@@ -609,8 +609,8 @@
         "index": 87
     },
     {
-        "vm_name": "rush-icap-test-dnd",
-        "uuid": "7db20de7-69f2-4b9a-ac00-c11649d7d564",
+        "vm_name": "rush-ub-dnd",
+        "uuid": "f2327704-712c-498a-a865-b1df46cc8afa",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
         "index": 88

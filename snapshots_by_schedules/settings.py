@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 env_path = Path('.') / '.env'
-print(env_path)
+#print(env_path)
 load_dotenv(dotenv_path=env_path)
 
 # Retrieve the encryption key
@@ -39,7 +39,8 @@ SECRET_KEY = 'django-insecure-pz$8^1tewr=sy4$c(*r_8=fie89^^vl++d388vf847j_p5mqp4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+
 
 
 # Application definition

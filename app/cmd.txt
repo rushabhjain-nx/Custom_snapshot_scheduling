@@ -7,4 +7,9 @@ celery -A snapshots_by_schedules.celery beat -l info
 celery -A snapshots_by_schedules.celery worker -l info
 
 
+gunicorn --workers 3 --bind unix:/tmp/snapshots_by_schedules.sock snapshots_by_schedules.wsgi:application
+
+
+
+
 
