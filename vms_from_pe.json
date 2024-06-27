@@ -126,584 +126,598 @@
         "index": 18
     },
     {
+        "vm_name": "Calm_Project_Windows",
+        "uuid": "66c9bdda-f8e3-4bca-a75a-d04464396c6a",
+        "cip": "10.38.87.37",
+        "cluster_name": "PHX-POC315",
+        "index": 19
+    },
+    {
         "vm_name": "CentOS_Master",
         "uuid": "bcc99329-ab9e-4886-a663-585d5e91fcf2",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 19
+        "index": 20
     },
     {
         "vm_name": "Centos_gold",
         "uuid": "c5d7dfe7-3494-4bdc-bc59-52a9f4b808bf",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 20
+        "index": 21
     },
     {
         "vm_name": "Control-UP",
         "uuid": "cff7e4ae-5a54-4fd2-a804-68855723548d",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 21
+        "index": 22
     },
     {
         "vm_name": "DNS_FS",
         "uuid": "fa49b9fe-212e-4f8c-9bc3-f2f61ec4ce00",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 22
+        "index": 23
     },
     {
         "vm_name": "Engine_01",
         "uuid": "c795aef4-32a6-47bf-b035-41e262a8b092",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 23
+        "index": 24
     },
     {
         "vm_name": "Engine_10",
         "uuid": "74ce82bf-b531-4bf0-9b41-2e06d31431a0",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 24
+        "index": 25
     },
     {
         "vm_name": "Engine_101",
         "uuid": "60d348b0-b0d5-42c9-96e6-f6b023e5afd9",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 25
+        "index": 26
     },
     {
         "vm_name": "FS-Ubuntu-Client-test1",
         "uuid": "fee1bef5-0b32-4250-8bce-839a87340efc",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 26
+        "index": 27
     },
     {
         "vm_name": "Mini-PR-Rush-DND",
         "uuid": "f0738507-8260-41c7-899c-f9b0c83155a8",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 27
+        "index": 28
     },
     {
         "vm_name": "Move-5.2.0",
         "uuid": "c02d25cb-5139-45bd-974c-0eb9bfc32b99",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 28
+        "index": 29
     },
     {
         "vm_name": "NTNX-FA-FileAnaly.",
         "uuid": "5273ed0f-1af9-4168-8e42-a5957c444485",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 29
+        "index": 30
     },
     {
         "vm_name": "NTNX-FileServer-1",
         "uuid": "068b3c01-edb0-4fad-8f53-3aad0d1639bc",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 30
+        "index": 31
     },
     {
         "vm_name": "NTNX-FileServer-2",
         "uuid": "ab064599-339c-4487-825a-eb1c31f2b14f",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 31
+        "index": 32
     },
     {
         "vm_name": "NTNX-FileServer-3",
         "uuid": "6d554a7f-7789-4234-83dc-58ad6ce8057c",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 32
+        "index": 33
     },
     {
         "vm_name": "NTNX-FileServerNew-1",
         "uuid": "24fb4e09-c7ef-4875-94d2-541aa4ccd340",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 33
+        "index": 34
     },
     {
         "vm_name": "NTNX-FileServerNew-2",
         "uuid": "7decbe91-ea12-481e-b7f2-838f769f07df",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 34
+        "index": 35
     },
     {
         "vm_name": "NTNX-FileServerNew-3",
         "uuid": "cd5214c5-7f10-4043-bf9f-11fb0714a059",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 35
+        "index": 36
     },
     {
         "vm_name": "NTNX-FileServerTest-1",
         "uuid": "a4ce91ae-f502-42f6-bcfe-cda5c4f0a7eb",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 36
+        "index": 37
     },
     {
         "vm_name": "NTNX-FileServerTest-2",
         "uuid": "036d9563-ddba-446f-86fe-c47827b5d6f2",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 37
+        "index": 38
     },
     {
         "vm_name": "NTNX-FileServerTest-3",
         "uuid": "c318de0c-883a-4507-9629-dab1c1d098f7",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 38
+        "index": 39
     },
     {
         "vm_name": "NTNX-New-FS-1",
         "uuid": "78577b12-46f7-4db5-aa65-40391a6b6f89",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 39
+        "index": 40
     },
     {
         "vm_name": "NTNX-New-FS-2",
         "uuid": "fc8c6f82-37b4-49ee-a01a-59104afa1e7f",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 40
+        "index": 41
     },
     {
         "vm_name": "NTNX-New-FS-3",
         "uuid": "b8228ee7-d6c2-46f1-b205-cab0e781b7b0",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 41
+        "index": 42
     },
     {
         "vm_name": "NTNX-OG-Files-1",
         "uuid": "8ce2139f-472c-4d60-a40f-5ff3785ab756",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 42
+        "index": 43
     },
     {
         "vm_name": "NTNX-OG-Files-2",
         "uuid": "3a94d1ae-b6d9-49d2-85a9-87e4bb7c027f",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 43
+        "index": 44
     },
     {
         "vm_name": "NTNX-OG-Files-3",
         "uuid": "9553d9f1-3c16-40d5-81ae-705a50a1b77d",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 44
+        "index": 45
     },
     {
         "vm_name": "PC-VM-1",
         "uuid": "dbc81857-c421-4206-af93-20a52e596cfc",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 45
+        "index": 46
     },
     {
         "vm_name": "PC-VM-2",
         "uuid": "539e78bd-ccd2-41e8-9cdd-077bdce5b8f9",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 46
+        "index": 47
     },
     {
         "vm_name": "PC-VM-3",
         "uuid": "1454d7db-9c77-4397-9621-fe819d5e492a",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 47
+        "index": 48
     },
     {
         "vm_name": "ProConnect-DEV-WIN-DND",
         "uuid": "9af15ec6-4a8c-47a1-80f7-0c8dc5b51b37",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 48
+        "index": 49
     },
     {
         "vm_name": "ProConnect-PROD-DND",
         "uuid": "f0d44a02-9382-4851-879a-ac148031ae29",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 49
+        "index": 50
     },
     {
         "vm_name": "RHEL-testing",
         "uuid": "0b0b4fd2-a490-486a-815e-40bcbc6526a1",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 50
+        "index": 51
     },
     {
         "vm_name": "Rocky_01",
         "uuid": "1f74d0da-f5e3-4fb3-9bc0-4c5c150d7989",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 51
+        "index": 52
     },
     {
         "vm_name": "Rocky_Linux",
         "uuid": "db720bdf-3c23-459f-9aa7-399f5a02d7bc",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 52
+        "index": 53
     },
     {
         "vm_name": "Rush-DSL",
         "uuid": "78a8b6cf-3405-49ea-87f1-24cd5f72ed63",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 53
+        "index": 54
     },
     {
         "vm_name": "Rush-dsl-from -template",
         "uuid": "03481b81-bd8c-4f83-9916-ddee37ce53df",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 54
+        "index": 55
     },
     {
         "vm_name": "Rushabh-AD-server-DND",
         "uuid": "7e033ef8-dd83-4510-b3a0-27cd487f3cc8",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 55
+        "index": 56
     },
     {
         "vm_name": "SNMP_Manager(Ubuntu)",
         "uuid": "797f418d-6628-4eeb-9197-30e97e783728",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 56
+        "index": 57
     },
     {
         "vm_name": "ScalingDemoVM-0-240122-232107",
         "uuid": "ee0b7a9f-7434-4e01-8f4c-42b440abf082",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 57
+        "index": 58
     },
     {
         "vm_name": "ScalingDemoVM-1-240122-233943",
         "uuid": "e1edd0af-48db-4c18-94a4-8a44efccd9dd",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 58
+        "index": 59
     },
     {
         "vm_name": "ScalingDemoVM-2-240122-233943",
         "uuid": "d15f7acb-d076-4485-9673-cbc55e7b9926",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 59
+        "index": 60
     },
     {
         "vm_name": "Script-Testing",
         "uuid": "8e38ef82-c121-43dc-a818-69119cff9fba",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 60
+        "index": 61
     },
     {
         "vm_name": "Script-Testing1",
         "uuid": "c2f49df5-b67a-4512-8aef-81009ea44491",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 61
+        "index": 62
     },
     {
         "vm_name": "TeSt",
         "uuid": "50d4bea9-5c1c-4f86-8e3c-b82662eb4eb1",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 62
+        "index": 63
     },
     {
         "vm_name": "Ubuntu-01",
         "uuid": "7214ce41-df22-4228-89a3-dd11a163da26",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 63
+        "index": 64
     },
     {
         "vm_name": "Ubuntu_gold",
         "uuid": "8f5c6e2b-dff2-4c25-8881-9a4ab415ea86",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 64
+        "index": 65
     },
     {
         "vm_name": "VM-240122-022044",
         "uuid": "497ea6be-b1dc-463e-aef4-ce9af45c126e",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 65
+        "index": 66
     },
     {
         "vm_name": "VM-240122-024024",
         "uuid": "2c0bf235-6ae5-43d0-a506-e7fcf278632a",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 66
+        "index": 67
     },
     {
         "vm_name": "VM-240122-032133",
         "uuid": "d9c40df9-a28b-4e4f-85ba-aab8f827a448",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 67
+        "index": 68
     },
     {
         "vm_name": "VM-@@(calm_time)@@",
         "uuid": "284e41cd-1833-473f-8b5e-1992f0aa12cc",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 68
+        "index": 69
     },
     {
         "vm_name": "VM_from_template",
         "uuid": "d6f36cf0-9068-49aa-ae6a-ac14f3db07fa",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 69
+        "index": 70
     },
     {
         "vm_name": "WIN10",
         "uuid": "1fb76380-6500-49db-badb-9c9653b51fd1",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 70
+        "index": 71
     },
     {
         "vm_name": "Win10-",
         "uuid": "c2e93ae6-004e-42a9-a014-5ac96b1cc0cc",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 71
+        "index": 72
     },
     {
         "vm_name": "Win10-tea.local",
         "uuid": "ddd98b5d-1513-47f9-9b14-c8dc28aabdc5",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 72
+        "index": 73
     },
     {
         "vm_name": "Win10-test5",
         "uuid": "bb747f47-dfb1-4f5e-a844-589cf495c77a",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 73
+        "index": 74
     },
     {
         "vm_name": "Win10-test6",
         "uuid": "2f81fdfa-b70b-444e-b31c-46ed44db6a28",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 74
+        "index": 75
     },
     {
         "vm_name": "Win10-tree.local",
         "uuid": "586d7080-4962-4c00-a300-b322c6db6690",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 75
+        "index": 76
     },
     {
         "vm_name": "Win10_gold(bios)",
         "uuid": "68a3e17f-ff23-4887-be1c-6ae6ccbf8db9",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 76
+        "index": 77
     },
     {
         "vm_name": "Win16ServerAD",
         "uuid": "49aead24-a335-4d1c-8143-f3af5ee887e2",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 77
+        "index": 78
     },
     {
         "vm_name": "Win2016(gold1)",
         "uuid": "a6a79396-3581-4935-a24c-77a58e6a89a8",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 78
+        "index": 79
     },
     {
         "vm_name": "WinAD-OG",
         "uuid": "1106d81c-c132-45ab-aaf4-b9bdb375b642",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 79
+        "index": 80
     },
     {
         "vm_name": "Windows 2012 VM",
         "uuid": "4b642b81-a629-4fad-bef6-7f827e7bd844",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 80
+        "index": 81
     },
     {
         "vm_name": "Windows_VM_2016",
         "uuid": "946fed5c-ae8f-4d8d-89c0-058f18ba72cd",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 81
+        "index": 82
     },
     {
         "vm_name": "Windows_VM_New",
         "uuid": "42879a05-a30d-43af-9379-66470a0b3a2a",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 82
+        "index": 83
+    },
+    {
+        "vm_name": "cen_cloud",
+        "uuid": "f1b3fbc5-4d25-466f-b623-aad419e8dc29",
+        "cip": "10.38.87.37",
+        "cluster_name": "PHX-POC315",
+        "index": 84
     },
     {
         "vm_name": "centos",
         "uuid": "e1ebb1f5-f92d-42c5-adc3-86807cafb469",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 83
+        "index": 85
     },
     {
         "vm_name": "karbon-oj-2b5fb4-etcd-0",
         "uuid": "7c45fd86-2d1b-4be7-8ee6-71c2ff303785",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 84
+        "index": 86
     },
     {
         "vm_name": "karbon-oj-e9cb8f-master-0",
         "uuid": "e16841b5-5365-48f8-a5ce-0cfbae381738",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 85
+        "index": 87
     },
     {
         "vm_name": "karbon-oj-e9cb8f-worker-0",
         "uuid": "cee66795-4c7c-48da-9830-7ea9ccaa3833",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 86
+        "index": 88
     },
     {
         "vm_name": "karbon-oj-e9cb8f-worker-1",
         "uuid": "a9d9981d-2fbf-4910-ae90-3a070dd13916",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 87
+        "index": 89
     },
     {
         "vm_name": "rush-ub-dnd",
         "uuid": "f2327704-712c-498a-a865-b1df46cc8afa",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 88
+        "index": 90
     },
     {
         "vm_name": "snap-test",
         "uuid": "8a7e0ef0-1bd6-496e-9dcb-90c338f659b4",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 89
+        "index": 91
     },
     {
         "vm_name": "suri-ad",
         "uuid": "1940e1ee-84dd-453c-87ea-dba9db847344",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 90
+        "index": 92
     },
     {
         "vm_name": "test",
         "uuid": "9fb2813d-a7f9-4777-8671-cd36d7fb7db7",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 91
+        "index": 93
     },
     {
         "vm_name": "test-vm",
         "uuid": "31b4bfb7-96d2-4cf4-b7ab-02e8aca049bf",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 92
+        "index": 94
     },
     {
         "vm_name": "test-win2k16",
         "uuid": "7c9600e3-7f26-47ad-9a0e-cbb931e74d03",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 93
+        "index": 95
     },
     {
         "vm_name": "vm-0-240320-233018",
         "uuid": "05327458-c1ed-41f3-819e-6aa39b75748a",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 94
+        "index": 96
     },
     {
         "vm_name": "vm-0-240320-235918",
         "uuid": "5adb6d83-88e0-4bcf-8497-14b9ed056477",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 95
+        "index": 97
     },
     {
         "vm_name": "vm_name",
         "uuid": "ed5df61d-4959-4c16-8b53-522ecb0c761e",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 96
+        "index": 98
     },
     {
         "vm_name": "win10vm-0",
         "uuid": "ffcbb58a-c99d-42db-8514-bd3094a437fb",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 97
+        "index": 99
     },
     {
         "vm_name": "win10vm-0",
         "uuid": "0232e105-f2e8-4b8e-ad6a-2d69bec8e9fa",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 98
+        "index": 100
     },
     {
         "vm_name": "win10vm-0",
         "uuid": "13ea2163-4062-4174-8691-16aa01f8fb92",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 99
+        "index": 101
     },
     {
         "vm_name": "win10vm-0",
         "uuid": "ac5d1b3c-a8ac-4b91-acdf-6e3b5644fca8",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 100
+        "index": 102
     },
     {
         "vm_name": "x-rau",
         "uuid": "7d017628-eb54-4da2-8ba6-0b34433f8a8b",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 101
+        "index": 103
     }
 ]

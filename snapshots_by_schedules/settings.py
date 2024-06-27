@@ -17,7 +17,7 @@ from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+ALLOWED_HOSTS=['*']
 
 env_path = Path('.') / '.env'
 #print(env_path)
@@ -38,8 +38,10 @@ SECRET_KEY = 'django-insecure-pz$8^1tewr=sy4$c(*r_8=fie89^^vl++d388vf847j_p5mqp4
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-
+#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True  # Redirect all HTTP traffic to HTTPS
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 
 
@@ -53,6 +55,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [

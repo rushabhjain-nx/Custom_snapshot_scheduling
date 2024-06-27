@@ -1,3 +1,4 @@
+dev (MAC os)
 source ../venv/bin/activate
 
 python3 manage.py runserver
@@ -11,5 +12,16 @@ gunicorn --workers 3 --bind unix:/tmp/snapshots_by_schedules.sock snapshots_by_s
 
 
 
+windows : 
+certificate must be there.
+
+.\venv\Scripts\activate
+
+python manage.py runserver 0.0.0.0:8000
+python manage.py runserver_plus --cert-file .\selfsigned.crt --key-file .\selfsigned.key 0.0.0.0:8000
+
+
+celery -A snapshots_by_schedules.celery worker --pool=solo -l info
+celery -A snapshots_by_schedules.celery beat -l info
 
 
