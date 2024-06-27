@@ -126,39 +126,46 @@
         "index": 18
     },
     {
+        "vm_name": "Calm_Project_Windows",
+        "uuid": "66c9bdda-f8e3-4bca-a75a-d04464396c6a",
+        "cip": "10.38.87.37",
+        "cluster_name": "PHX-POC315",
+        "index": 19
+    },
+    {
         "vm_name": "CentOS_Master",
         "uuid": "bcc99329-ab9e-4886-a663-585d5e91fcf2",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 19
+        "index": 20
     },
     {
         "vm_name": "Centos_gold",
         "uuid": "c5d7dfe7-3494-4bdc-bc59-52a9f4b808bf",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 20
+        "index": 21
     },
     {
         "vm_name": "Control-UP",
         "uuid": "cff7e4ae-5a54-4fd2-a804-68855723548d",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 21
+        "index": 22
     },
     {
         "vm_name": "DNS_FS",
         "uuid": "fa49b9fe-212e-4f8c-9bc3-f2f61ec4ce00",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 22
+        "index": 23
     },
     {
         "vm_name": "Engine_01",
         "uuid": "c795aef4-32a6-47bf-b035-41e262a8b092",
         "cip": "10.38.87.37",
         "cluster_name": "PHX-POC315",
-        "index": 23
+        "index": 24
     },
     {
         "vm_name": "Engine_10",

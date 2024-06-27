@@ -1,1 +1,8 @@
 *.pyc
+venv/
+.DS_Store
+db.sqlite3
+celerybeat-schedule.db
+celerybeat-schedule.bak
+celerybeat-schedule.dat
+celerybeat-schedule.dir

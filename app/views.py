@@ -23,7 +23,7 @@ def home(request):
     return render(request,'home.html')
 
 def snapshot_schedule_list(request):
-    schedules = SnapshotSchedule.objects.filter(snapshot_taken=False)
+    schedules = SnapshotSchedule.objects.filter(snapshot_taken=False,snapshot_failed=False)
     return render(request, 'snapshot_schedule_list.html', {'schedules': schedules})
 
 def past_snapshots(request):
@@ -195,7 +195,7 @@ def check_ss(self):
     current_datetime = timezone.now()
 
     # Retrieve all SnapshotSchedule objects where snapshot is not taken
-    snapshot_schedules = SnapshotSchedule.objects.filter(snapshot_taken=False)
+    snapshot_schedules = SnapshotSchedule.objects.filter(snapshot_taken=False, snapshot_failed=False)
 
     # Convert queryset to list of dictionaries
     snapshot_schedules_data = list(snapshot_schedules.values())
@@ -230,9 +230,9 @@ def check_ss(self):
             if res is None:
 
                 # If snapshot failed, reschedule for one hour later
-                new_snapshot_datetime = snapshot_datetime + timedelta(hours=1)
-                snapshot_schedule.snapshot_date = new_snapshot_datetime.date()
-                snapshot_schedule.snapshot_time = new_snapshot_datetime.time()
+               # new_snapshot_datetime = snapshot_datetime + timedelta(hours=1)
+               # snapshot_schedule.snapshot_date = new_snapshot_datetime.date()
+               # snapshot_schedule.snapshot_time = new_snapshot_datetime.time()
                 snapshot_schedule.snapshot_failed = True
                 snapshot_schedule.save()
 
