@@ -1,4 +1,7 @@
 dev (MAC os)
+
+redis-server --daemonize yes
+
 source ../venv/bin/activate
 
 python3 manage.py runserver
@@ -7,6 +10,9 @@ celery -A snapshots_by_schedules.celery beat -l info
 
 celery -A snapshots_by_schedules.celery worker -l info
 
+after logging implementation : 
+celery -A snapshots_by_schedules.celery beat  --loglevel=INFO --logfile="/Users/rushabh.jain/Desktop/my projects/snapshots_by_api/snapshots_by_schedules/django.log"
+celery -A snapshots_by_schedules.celery worker  --loglevel=INFO --logfile="/Users/rushabh.jain/Desktop/my projects/snapshots_by_api/snapshots_by_schedules/django.log"
 
 gunicorn --workers 3 --bind unix:/tmp/snapshots_by_schedules.sock snapshots_by_schedules.wsgi:application
 
@@ -23,5 +29,4 @@ python manage.py runserver_plus --cert-file .\selfsigned.crt --key-file .\selfsi
 
 celery -A snapshots_by_schedules.celery worker --pool=solo -l info
 celery -A snapshots_by_schedules.celery beat -l info
-
 

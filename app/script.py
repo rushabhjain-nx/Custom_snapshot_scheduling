@@ -191,7 +191,6 @@ def get_vm_uuidsc(creds):
 
     return vms_uuid
 
-#creds = ["10.38.87.39","rushabh","Nutanix/4u"]
 #get_pe(creds)
 #get_vm_uuidsc(creds)
 #take_snapshots(creds)
