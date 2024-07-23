@@ -23,10 +23,54 @@ certificate must be there.
 
 .\venv\Scripts\activate
 
+python manage.py makemigrations
+python manage.py migrate
+
 python manage.py runserver 0.0.0.0:8000
 python manage.py runserver_plus --cert-file .\selfsigned.crt --key-file .\selfsigned.key 0.0.0.0:8000
 
-
 celery -A snapshots_by_schedules.celery worker --pool=solo -l info
 celery -A snapshots_by_schedules.celery beat -l info
+
+
+redis on windows :
+download zip
+navigate to folder and start redis-server.exe
+
+
+setup task schedular :
+
+
+batch file:
+@echo off
+setlocal
+
+:: Set your project directory
+set PROJECT_DIR=C:\path\to\your\project
+
+:: Set your virtual environment directory
+set VENV_DIR=%PROJECT_DIR%\venv
+
+:: Set the Django settings module (if needed)
+set DJANGO_SETTINGS_MODULE=myproject.settings
+
+:: Start Redis server
+start "" redis-server
+
+:: Activate the virtual environment
+call %VENV_DIR%\Scripts\activate.bat
+
+:: Navigate to the project directory
+cd %PROJECT_DIR%
+
+:: Start Django application
+start "" python manage.py runserver 0.0.0.0:8000
+
+:: Start Celery worker
+start "" snapshots_by_schedules.celery worker --pool=solo -l info
+
+:: Start Celery beat
+start "" snapshots_by_schedules.celery beat -l info
+
+endlocal
 
