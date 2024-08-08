@@ -180,8 +180,9 @@ def failed_snapshots(request):
     return render(request, 'failed_snapshots.html', {'schedules': schedules}) 
 
 
-@shared_task(bind=True)
-def check_ss(self):
+#@shared_task(bind=True)
+#def check_ss(self):
+def check_ss():
     """
     Task to check and execute snapshot schedules.
 

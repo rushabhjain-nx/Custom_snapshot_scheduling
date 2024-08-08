@@ -5,8 +5,9 @@ import json
 import requests
 from .creds_handler import decrypt_text
 
-@shared_task(bind=True)
-def take_snapshot(self, uuid, cip, ss_name):
+#@shared_task(bind=True)
+#def take_snapshot(self, uuid, cip, ss_name):
+def take_snapshot(uuid, cip, ss_name):
     """
     Task to take a snapshot of a VM using Prism Element credentials.
 

@@ -74,3 +74,7 @@ start "" snapshots_by_schedules.celery beat -l info
 
 endlocal
 
+
+
+added a new fucntion in app.py to just start an infinite loop
+

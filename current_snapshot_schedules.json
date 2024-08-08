@@ -1,1 +1,16 @@
-[]
+[
+    {
+        "id": 67,
+        "vm_name": "User01-MYSQL",
+        "vm_uuid": "ff062af8-66e8-48d6-aad8-4d7685d155fb",
+        "snapshot_time": "13:59:00",
+        "snapshot_date": "2024-08-05",
+        "cluster_ip": "10.38.82.37",
+        "cluster_name": "PHX-POC310",
+        "task_id": null,
+        "snapshot_taken": false,
+        "snapshot_execution_datetime": "none",
+        "snapshot_name": "r4iopfnrpwf",
+        "snapshot_failed": false
+    }
+]
